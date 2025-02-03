@@ -1,32 +1,29 @@
 # Data Preparation
-
-In diesem Ordner befinden sich die Skripte und Notebooks, die für die Datenvorbereitung des Bäckerei-Umsatzprognoseprojekts verwendet wurden. Eine effiziente und genaue Datenvorbereitung ist grundlegend für erfolgreiche Prognosemodelle. Die Aufgaben umfassen das Importieren des Datensatzes, das Bereinigen der Daten und das Erstellen neuer Variablen, die für die Umsatzprognose relevant sind. Im Folgenden wird beschrieben, was in den einzelnen Dateien gemacht wurde:
+This folder contains the scripts and notebooks used for data preparation of the bakery sales forecast project. The tasks include importing the dataset, cleaning the data, and creating new variables relevant for sales forecasting. The following notes describe what was done in each file:
 
 ## INSTRUCTIONS.md
+The file [`INSTRUCTIONS.md`](0_DataPreparation/INSTRUCTIONS.md) provides an overview and guidelines for the data preparation process. It describes the key topics to focus on, including data import, merging data from different sources, data cleaning, handling missing values, creating new variables, and data transformation.
 
-Die Datei [`INSTRUCTIONS.md`](0_DataPreparation/INSTRUCTIONS.md) bietet eine Übersicht und Richtlinien für den Datenvorbereitungsprozess. Sie beschreibt die wichtigsten Themen, auf die man sich konzentrieren sollte, einschließlich Datenimport, Zusammenführen von Daten aus verschiedenen Quellen, Datenbereinigung, Umgang mit fehlenden Werten, Erstellen neuer Variablen und Datentransformation.
-
-## Datenimport und Vorbereitung Notebooks
-
+## Data Import and Preparation Notebooks
 1. **DATA_IMPORT.ipynb**
-   - Dieses Notebook importiert Daten von externen Quellen und speichert sie als CSV-Dateien. Es führt eine erste Datenexploration und Visualisierung durch und führt die Umsatzdaten mit den Daten der Kieler Woche und den Wetterdaten zusammen.
-
+   - Imports data from external sources and saves them as CSV files.
 2. **DATA_PREP_WETTER.ipynb**
-   - Dieses Notebook konzentriert sich auf die Vorbereitung der Wetterdaten. Es umfasst Schritte zum Einlesen der Wetterdaten, Umgang mit fehlenden Werten, Erstellen von Bins für Bewölkung und Temperatur sowie das Konvertieren von booleschen Dummy-Variablen in Ganzzahlen. Es kategorisiert auch Wettercodes in beschreibende Kategorien.
-
-3. **DATA_PREP_WARENGRUPPEN.ipynb**
-   - Dieses Notebook bereitet die Daten der Warengruppen vor, indem es Dummy-Variablen für verschiedene Warengruppen erstellt und die bereinigten Daten speichert.
-
+   - Prepares the weather data, creates bins for cloud cover and temperature, converts boolean dummy variables to integers, and categorizes weather codes.
+3. **DATA_PREP_UMSATZ_WARENGRUPPE.ipynb**
+   - Prepares the product group sales data by creating dummy variables for different product groups.
 4. **DATA_PREP_SCHIFFAHRTSDATEN.ipynb**
-   - Dieses Notebook behandelt die Vorbereitung der Schifffahrtsdaten. Es umfasst Schritte zum Einlesen der Daten mit verschiedenen Kodierungen, Filtern relevanter Spalten und Umbenennen von Spalten zur Konsistenz.
-
+   - Prepares the shipping data by testing different encodings, filtering relevant columns, and renaming columns.
 5. **DATA_PREP_MERGE.ipynb**
-   - Dieses Notebook führt verschiedene vorbereitete Datensätze zusammen, einschließlich Umsatzdaten, Kieler Woche, Schifffahrtsdaten, Wetterdaten und Wochentagsdaten. Es speichert den zusammengeführten Datensatz und teilt ihn in Trainings- und Testdatensätze auf.
-
-6. **DATA_PREP_KIWO_WOCHENTAGE.ipynb**
-   - Dieses Notebook bereitet Daten im Zusammenhang mit der Kieler Woche und den Wochentagen vor. Es extrahiert relevante Spalten und speichert die bereinigten Daten.
-
+   - Merges various prepared datasets, including sales data, Kiel Week, shipping data, weather data, and weekday data, and saves the merged dataset.
+6. **DATA_PREP_MERGE_v2.ipynb (NOT USED)**
+   - Update of data_prep_merge_v2. However, it is not used.
 7. **DATA_PREP_EVENTS.ipynb**
-   - Dieses Notebook bereitet Ereignisdaten vor, indem es Feiertage und andere relevante Ereignisse in den Datensatz integriert und die bereinigten Daten speichert.
+   - Integrates holidays and other relevant events into the dataset and saves the cleaned data.
+8. **DATA_PREP_KIWO.ipynb**
+   - Prepares data related to Kiel Week, creates a complete date series, and replaces missing values.
+9. **DATA_PREP_WOCHENTAGE.ipynb**
+   - Extracts weekday information and saves the cleaned data.
+10. **DATA_PREP_NEURAL_NETWORK.ipynb**
+    - Prepares the data for use in a neural network by removing irrelevant columns.
 
-Insgesamt stellt dieser Ordner sicher, dass alle relevanten Daten für die Umsatzprognose korrekt importiert, bereinigt und vorbereitet werden, um eine solide Grundlage für die Modellierung zu schaffen.
+Overall, this folder ensures that all relevant data for sales forecasting is correctly imported, cleaned, and prepared to create a solid foundation for modeling.

@@ -1,40 +1,66 @@
-# Dokumentation Lineares Baseline Model 
-Diese lineare Regressionsmodell zielt darauf ab, die abhängige Variable `Umsatz` (Verkäufe) unter Verwendung verschiedener unabhängiger Variablen vorherzusagen. Das Modell berücksichtigt die folgenden Variablen:
+## Baseline Model
+This folder contains the scripts and notebooks used for building and evaluating the baseline linear model for the bakery sales forecast project. The tasks include importing the dataset, fitting a linear regression model, making predictions, and preparing the results for Kaggle submission. The following notes describe what was done in each file:
 
-1. **Produktkategorien**:
-   - `Brot`: Verkäufe von Brot.
-   - `Broetchen`: Verkäufe von Brötchen.
-   - `Croissant`: Verkäufe von Croissants.
-   - `Konditorei`: Verkäufe von Konditoreiwaren.
-   - `Kuchen`: Verkäufe von Kuchen.
-   - `Saisonbrot`: Verkäufe von saisonalem Brot.
+### INSTRUCTIONS.md
+The file INSTRUCTIONS.md provides an overview and guidelines for building the baseline model. It describes the key steps to focus on, including data import, model fitting, making predictions, and preparing the results for submission.
 
-2. **Ereignisse und Feiertage**:
-   - `national_holiday`: Indikator für nationale Feiertage.
-   - `christmas_market`: Indikator für das Vorhandensein eines Weihnachtsmarktes.
-   - `KielerWoche`: Indikator für das Ereignis Kieler Woche.
+### Linear Model Notebook
+#### LINEAR_MODEL.ipynb
+1. **Preparation**:
+   - Imports necessary libraries such as `pandas` and `statsmodels`.
+   - Reads the training dataset (`df_training_neural_network.csv`) for model building.
 
-3. **Wetterbedingungen**:
-   - `Schifffahrt`: Indikator für Schifffahrtsaktivitäten.
-   - `bewoelkt_bins_bewoelkt_1mäßig_3_5`: Indikator für mäßige Bewölkung.
-   - `bewoelkt_bins_bewoelkt_2stark_6_8`: Indikator für starke Bewölkung.
-   - `temp_bins_kalt`: Indikator für kalte Temperaturen.
-   - `temp_bins_mild`: Indikator für milde Temperaturen.
-   - `temp_bins_warm`: Indikator für warme Temperaturen.
-   - `temp_bins_heiß`: Indikator für heiße Temperaturen.
-   - `wind_bins_Wind`: Indikator für windige Bedingungen.
-   - `wind_bins_Sturm`: Indikator für stürmische Bedingungen.
-   - `Wettercode_2_leichter_niederschlag`: Indikator für leichten Niederschlag.
-   - `Wettercode_3_starker_niederschlag`: Indikator für starken Niederschlag.
-   - `Wettercode_4_gewitter`: Indikator für Gewitter.
+2. **Building the Linear Model**:
+   - Fits a linear regression model using `statsmodels` with `Umsatz` as the dependent variable and various features (e.g., product groups, months, holidays, weather conditions) as independent variables.
+   - Outputs the summary of the fitted model, including key metrics such as R-squared, coefficients, and p-values.
 
-4. **Zeitvariablen**:
-   - `Monat`: Monat des Jahres.
-   - `Wochentag_Di`: Indikator für Dienstag.
-   - `Wochentag_Mi`: Indikator für Mittwoch.
-   - `Wochentag_Do`: Indikator für Donnerstag.
-   - `Wochentag_Fr`: Indikator für Freitag.
-   - `Wochentag_Sa`: Indikator für Samstag.
-   - `Wochentag_So`: Indikator für Sonntag.
+3. **Create Predictions**:
+   - Loads the test dataset (`df_test_neural_network.csv`).
+   - Uses the fitted model to predict `Umsatz` for the test dataset.
+   - Saves the predictions in a CSV file (`df_predictions_linearModel.csv`).
 
-Diese Variablen werden verwendet, um ein lineares Regressionsmodell zu erstellen, das den `Umsatz` (Verkäufe) der Bäckerei vorhersagt. Die Zusammenfassung des angepassten Modells liefert wichtige Kennzahlen wie R-Quadrat, Koeffizienten und p-Werte, die helfen, die Bedeutung und den Einfluss jeder Variablen auf die Zielvariable `Umsatz` zu verstehen.
+4. **Prepare Kaggle-Upload**:
+   - Loads the predictions file.
+   - Replaces any NaN values in the `Umsatz` column with 0.
+   - Keeps only the `id` and `Umsatz` columns for submission.
+   - Saves the final dataframe as `df_kaggle_upload_linearModel.csv`.
+
+Overall, this folder ensures that a baseline linear model is correctly built, evaluated, and the predictions are prepared for submission to Kaggle.
+
+### Variables Used in the Linear Model
+1. **Product Categories**:
+   - `Brot`: Sales of bread.
+   - `Broetchen`: Sales of rolls.
+   - `Croissant`: Sales of croissants.
+   - `Konditorei`: Sales of confectionery products.
+   - `Kuchen`: Sales of cakes.
+
+2. **Events and Holidays**:
+   - `national_holiday`: Indicator for national holidays.
+   - `christmas_market`: Indicator for the presence of a Christmas market.
+   - `KielerWoche`: Indicator for the Kiel Week event.
+
+3. **Weather Conditions**:
+   - `temp_bins_kalt`: Indicator for cold temperatures.
+   - `temp_bins_mild`: Indicator for mild temperatures.
+   - `temp_bins_warm`: Indicator for warm temperatures.
+   - `temp_bins_heiß`: Indicator for hot temperatures.
+
+4. **Time Variables**:
+   - `Monat_2`: February.
+   - `Monat_3`: March.
+   - `Monat_4`: April.
+   - `Monat_5`: May.
+   - `Monat_6`: June.
+   - `Monat_7`: July.
+   - `Monat_8`: August.
+   - `Monat_9`: September.
+   - `Monat_10`: October.
+   - `Monat_11`: November.
+   - `Monat_12`: December.
+   - `Wochentag_Di`: Indicator for Tuesday.
+   - `Wochentag_Mi`: Indicator for Wednesday.
+   - `Wochentag_Do`: Indicator for Thursday.
+   - `Wochentag_Fr`: Indicator for Friday.
+   - `Wochentag_Sa`: Indicator for Saturday.
+   - `Wochentag_So`: Indicator for Sunday.
