@@ -3,6 +3,7 @@
 ## Repository Link
 
 https://github.com/manuelboehm/MA-bakery-sales-prediction
+(The branch production contains the current code. The branch main is not up to date.)
 
 ## Description
 
